@@ -132,7 +132,7 @@ class QRHomeController: UIViewController {
         }).disposed(by: disposeBag)
         
         addFolderBarItem.rx.tap.subscribe(onNext: {[weak self] in
-            
+            self?.present(QRAddFolderController(), animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
         

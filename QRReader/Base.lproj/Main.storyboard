@@ -203,10 +203,10 @@
             </objects>
             <point key="canvasLocation" x="2168.8000000000002" y="-423.23838080959524"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Folder Controller-->
         <scene sceneID="SAN-ny-3Dh">
             <objects>
-                <viewController id="cSQ-Wq-yLb" sceneMemberID="viewController">
+                <viewController id="cSQ-Wq-yLb" customClass="QRAddFolderController" customModule="QRReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zxk-6p-Fe9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

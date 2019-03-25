@@ -8,6 +8,7 @@ target 'QRReader' do
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
   # Pods for QRReader
+  # for test edit in webside
 
   target 'QRReaderTests' do
     inherit! :search_paths

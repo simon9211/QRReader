@@ -10,6 +10,7 @@
 		A054500ECD305D9196CD75FC /* Pods_QRReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFED3BFECB76AB64E09D1143 /* Pods_QRReader.framework */; };
 		BA3D8F761DD9AC6E34F150AE /* Pods_QRReaderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A311365F446BEB2FED573C6 /* Pods_QRReaderTests.framework */; };
 		DA0415582248DA340001A0B4 /* QRAddFolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415572248DA340001A0B4 /* QRAddFolderController.swift */; };
+		DA0415632248F76D0001A0B4 /* QRToolExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415622248F76D0001A0B4 /* QRToolExtensions.swift */; };
 		DA130E7C224241B400B9703D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA130E7B224241B400B9703D /* AppDelegate.swift */; };
 		DA130E7E224241B400B9703D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA130E7D224241B400B9703D /* ViewController.swift */; };
 		DA130E81224241B400B9703D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA130E7F224241B400B9703D /* Main.storyboard */; };
@@ -41,6 +42,8 @@
 		9942CF4676BF12D2A07C3D14 /* Pods-QRReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRReader.release.xcconfig"; path = "Target Support Files/Pods-QRReader/Pods-QRReader.release.xcconfig"; sourceTree = "<group>"; };
 		B739A92A64C2303278385B90 /* Pods-QRReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRReader.debug.xcconfig"; path = "Target Support Files/Pods-QRReader/Pods-QRReader.debug.xcconfig"; sourceTree = "<group>"; };
 		DA0415572248DA340001A0B4 /* QRAddFolderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRAddFolderController.swift; sourceTree = "<group>"; };
+		DA04155B2248F0840001A0B4 /* QRReader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QRReader-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA0415622248F76D0001A0B4 /* QRToolExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRToolExtensions.swift; sourceTree = "<group>"; };
 		DA130E78224241B400B9703D /* QRReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA130E7B224241B400B9703D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA130E7D224241B400B9703D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +103,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DA04155F2248F6A00001A0B4 /* UtoolExtension */ = {
+			isa = PBXGroup;
+			children = (
+				DA0415622248F76D0001A0B4 /* QRToolExtensions.swift */,
+			);
+			path = UtoolExtension;
+			sourceTree = "<group>";
+		};
 		DA130E6F224241B400B9703D = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +134,7 @@
 		DA130E7A224241B400B9703D /* QRReader */ = {
 			isa = PBXGroup;
 			children = (
+				DA04155F2248F6A00001A0B4 /* UtoolExtension */,
 				DAA2327D2244AE0E00749F18 /* model */,
 				DAA2327422433D2300749F18 /* view */,
 				DA130E7B224241B400B9703D /* AppDelegate.swift */,
@@ -153,6 +165,7 @@
 				DA130E9C22424AFA00B9703D /* QRScanController.swift */,
 				DAA2326F2243310C00749F18 /* QRHomeController.swift */,
 				DA0415572248DA340001A0B4 /* QRAddFolderController.swift */,
+				DA04155B2248F0840001A0B4 /* QRReader-Bridging-Header.h */,
 			);
 			path = scan;
 			sourceTree = "<group>";
@@ -227,6 +240,7 @@
 				TargetAttributes = {
 					DA130E77224241B400B9703D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					DA130E8B224241B600B9703D = {
 						CreatedOnToolsVersion = 10.1;
@@ -306,18 +320,24 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-QRReader/Pods-QRReader-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/WeScan/WeScan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WeScan.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +379,7 @@
 				DA0415582248DA340001A0B4 /* QRAddFolderController.swift in Sources */,
 				DA130E9D22424AFA00B9703D /* QRScanController.swift in Sources */,
 				DA130E7C224241B400B9703D /* AppDelegate.swift in Sources */,
+				DA0415632248F76D0001A0B4 /* QRToolExtensions.swift in Sources */,
 				DAA2327F2244AE4F00749F18 /* QRHomeModel.swift in Sources */,
 				DAA2327A22435EA200749F18 /* QRConst.swift in Sources */,
 				DAA232782243549400749F18 /* QRHomeCell.swift in Sources */,
@@ -532,6 +553,7 @@
 			baseConfigurationReference = B739A92A64C2303278385B90 /* Pods-QRReader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3PV33XPK7B;
 				INFOPLIST_FILE = QRReader/Info.plist;
@@ -542,6 +564,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.qk365.online;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = qkonlineDev;
+				SWIFT_OBJC_BRIDGING_HEADER = "QRReader/scan/QRReader-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -552,6 +576,7 @@
 			baseConfigurationReference = 9942CF4676BF12D2A07C3D14 /* Pods-QRReader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QRReader/Info.plist;
@@ -562,6 +587,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.qk365.online;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "QRReader/scan/QRReader-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

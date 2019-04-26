@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxDataSources
 
 enum HomeFileType {
     case HomeFileNone
@@ -15,7 +16,22 @@ enum HomeFileType {
     case HomeFileCode   // 二维码/条码
 }
 
-class HomeModel {
+struct HomeSectionModel<String, ItemType>: SectionModelType {
+    var items: [ItemType]
+    var header: String
+    public typealias Item = ItemType
+    
+    init(original: HomeSectionModel<String, ItemType>, items: [ItemType]) {
+        self = original
+        self.items = items
+    }
+    
+    public var identity: String {
+        return header
+    }
+}
+
+struct HomeModel: Equatable, CustomDebugStringConvertible  {
     var isSelected: Bool
     var fileType: HomeFileType
     var title: String
@@ -28,5 +44,11 @@ class HomeModel {
         self.items = items
         self.date = date
         self.isSelected = false
+    }
+}
+
+extension HomeModel {
+    var debugDescription: String {
+        return ""
     }
 }

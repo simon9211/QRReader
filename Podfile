@@ -7,6 +7,8 @@ target 'QRReader' do
   pod 'WeScan', '>= 0.9'
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
+  pod 'RxDataSources', '~> 3.0'
+  pod 'SVProgressHUD'
   # Pods for QRReader
   # for test edit in webside
 

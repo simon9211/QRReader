@@ -11,18 +11,14 @@ import UIKit
 class QRHomeCell: UITableViewCell {
 
     var _isEdit: Bool = false
-    
-    
-    
     var isEdit: Bool {
         set {
             _isEdit = newValue
             UIView.animate(withDuration: 0.25) {
-               self.checkBoxBtn.isHidden = !self._isEdit
-               self.leadingOfIcon.constant = self._isEdit ? 45 : 10
-               self.touchBtn.isHidden = !self._isEdit
-               self.tailOfTitleLabel.constant = self._isEdit ? -25 : 10
-               self.timeLabel.isHidden = self._isEdit
+                self.checkBoxBtn.isHidden = !self._isEdit
+                self.leadingOfIcon.constant = self._isEdit ? 45 : 10
+                self.tailOfTitleLabel.constant = self._isEdit ? -25 : 10
+                self.timeLabel.isHidden = self._isEdit
             }
         }
         get{
@@ -30,13 +26,11 @@ class QRHomeCell: UITableViewCell {
         }
     }
     
-    
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tipsLabel: UILabel!
     @IBOutlet weak var checkBoxBtn: UIButton!
-    @IBOutlet weak var touchBtn: UIButton!
     
     // 10 / 45
     @IBOutlet weak var leadingOfIcon: NSLayoutConstraint!

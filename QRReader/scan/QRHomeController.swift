@@ -21,25 +21,25 @@ enum ItemEditingCommand {
 struct QRHomeViewModel {
     fileprivate var homeItems: [HomeModel]
     init(homeItems:[HomeModel] = []) {
-//        self.homeItems = [
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-//        ]
-        self.homeItems = homeItems
+        self.homeItems = [
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+        ]
+//        self.homeItems = homeItems
     }
     func executeCommand(command: ItemEditingCommand) -> QRHomeViewModel{
         switch command {
@@ -126,9 +126,12 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
         }).disposed(by: disposeBag)
         
         editBarItem.rx.tap.subscribe(onNext: {[weak self] in
-            self?.handleNaviToolBarButtom((self?.editBarItem)!)
+            self?.handleNaviToolBarButtom()
         }).disposed(by: disposeBag)
         
+//        bindViewModel()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     // MARK: - handle UI Action With Rx
@@ -214,16 +217,15 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
         }
     }
     
-    func handleNaviToolBarButtom(_ sender: UIBarButtonItem) {
-        isEdit = (sender.title == "Edit")
+    func handleNaviToolBarButtom() {
+        
+        isEdit = (editBarItem.title == "Edit")
         // 编辑 显示⬅️
         for cell: QRHomeCell in tableView!.visibleCells as! [QRHomeCell]{
             cell.isEdit = isEdit
         }
         tableView.setEditing(isEdit, animated: true)
-//        tableView.setEditing(!isEdit, animated: true)
-//        tableView.isEditing = true
-        sender.title = isEdit ? "Done":"Edit"
+        editBarItem.title = isEdit ? "Done":"Edit"
         selectBarItem.isEnabled = isEdit
         selectBarItem.image = isEdit ? (UIImage(named: "right")) : nil
         addFolderBarItem.isEnabled = isEdit
@@ -275,13 +277,9 @@ extension QRHomeController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.navigationBar.showLine(hidenBigTitle)
             
             if offset > -44 && offset < 0 {
-//                titleLabel.font = UIFont.boldSystemFont(ofSize: 30 * (100 - offset) / 100.0)
+                //titleLabel.font = UIFont.boldSystemFont(ofSize: 30 * (100 - offset) / 100.0)
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
-        return true
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -299,5 +297,9 @@ extension QRHomeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
 }

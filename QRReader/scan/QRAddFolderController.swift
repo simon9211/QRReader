@@ -12,7 +12,7 @@ import RxSwift
 
 
 protocol QRAddFolderDelegate: NSObjectProtocol {
-    func addFolderDetail(_ folder: HomeModel)
+    func addFolderDetail(_ folder: HomeItem)
 }
 
 class QRAddFolderController: UIViewController {
@@ -31,7 +31,11 @@ class QRAddFolderController: UIViewController {
                 SVProgressHUD.showError(withStatus: "Please input a name for folder")
                 return
             }
-            self?.delegate?.addFolderDetail(HomeModel(fileType: .HomeFileFolder, title: name, items: 10, date: Date()))
+            let item = HomeItem()
+            item.title = name
+            item.items = Int(arc4random() % 100)
+            item.fileType = HomeFileType.folder.rawValue
+            self?.delegate?.addFolderDetail(item)
             self?.dismiss(animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
@@ -39,9 +43,12 @@ class QRAddFolderController: UIViewController {
             self?.dismiss(animated: true, completion: nil)
         }).disposed(by: disposeBag)
         
-        // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.becomeFirstResponder()
+    }
 
     
     // MARK: - Navigation

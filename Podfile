@@ -9,6 +9,8 @@ target 'QRReader' do
   pod 'RxCocoa',    '~> 4.0'
   pod 'RxDataSources', '~> 3.0'
   pod 'SVProgressHUD'
+  pod 'SnapKit', '~> 4.2.0'
+  pod 'RealmSwift', '~> 3.13.0'
   # Pods for QRReader
   # for test edit in webside
 

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Eab-ct-4jY">
-                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="cEE-cL-kQR">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
@@ -165,7 +165,7 @@
                             <constraint firstItem="Eab-ct-4jY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="aUo-kT-JPh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Eab-ct-4jY" secondAttribute="trailing" id="dP0-A1-3fF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Eab-ct-4jY" secondAttribute="bottom" id="gQR-mE-1y9"/>
-                            <constraint firstItem="Eab-ct-4jY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="hpn-yz-5Sb"/>
+                            <constraint firstItem="Eab-ct-4jY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-44" id="hpn-yz-5Sb"/>
                             <constraint firstAttribute="bottom" secondItem="gsQ-bh-Nwv" secondAttribute="bottom" constant="-49" id="n7H-6f-LXy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

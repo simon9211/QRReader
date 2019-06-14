@@ -12,34 +12,34 @@ import RxSwift
 //import RxDataSources
 
 enum ItemEditingCommand {
-    case setItems(items: [HomeModel])
-    case addItem(item: HomeModel)
+    case setItems(items: [HomeItem])
+    case addItem(item: HomeItem)
     case deleteItem(indexPath: IndexPath)
     case moveItem(from: IndexPath, to: IndexPath)
 }
 
 struct QRHomeViewModel {
-    fileprivate var homeItems: [HomeModel]
-    init(homeItems:[HomeModel] = []) {
-        self.homeItems = [
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-        ]
-//        self.homeItems = homeItems
+    fileprivate var homeItems: [HomeItem]
+    init(homeItems:[HomeItem] = []) {
+//        self.homeItems = [
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//            HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
+//        ]
+        self.homeItems = homeItems
     }
     func executeCommand(command: ItemEditingCommand) -> QRHomeViewModel{
         switch command {
@@ -76,25 +76,8 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
     @IBOutlet weak var editBarItem: UIBarButtonItem!
     @IBOutlet weak var toolBar: UIToolbar!
     
-    var dataSource: [HomeModel] = [
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                HomeModel(fileType: .HomeFileCode, title: "Simon", items: 10, date: Date()),
-                                ]
-
+    var dataSource: [HomeItem] = []
+    
     var disposeBag = DisposeBag()
     var isEdit: Bool = false
     var isSelectAll: Bool = false
@@ -114,10 +97,10 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
             } else {
                 self?.selectBarItem.image = UIImage(named: "right")
             }
-            var arr: [HomeModel] = [HomeModel]()
+            var arr: [HomeItem] = [HomeItem]()
             
             for model in self?.dataSource ?? [] {
-                var m = model
+                let m = model
                 m.isSelected = self?.isSelectAll ?? false
                 arr.append(m)
             }
@@ -132,6 +115,16 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
 //        bindViewModel()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let items = QRDBManager.getItems()
+        for item in items {
+            dataSource.append(item)
+        }
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     // MARK: - handle UI Action With Rx
@@ -140,16 +133,11 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
         
         items.bind(to:tableView.rx.items){(tb, row, model) -> UITableViewCell in
             let cell = tb.dequeueReusableCell(withIdentifier: "QRHomeCell") as! QRHomeCell
-            cell.titleLabel.text = model.title
-            cell.tipsLabel.text = "\(model.items) items";
+            cell.model = model
             let format: DateFormatter = DateFormatter();
             format.dateFormat = "yyyy/MM/dd"
-            cell.timeLabel.text = format.string(from: Date(timeIntervalSinceNow: TimeInterval(1000000 * row)))
             cell.isEdit = self.isEdit
-            cell.checkBoxBtn.isSelected = model.isSelected
-//            cell.editingAccessoryView = UIImageView(image: UIImage(named: "right"))
             cell.didSelectTap = {(selected) in
-                // model.isSelected = selected
                 if !selected {
                     self.selectBarItem.image = UIImage(named: "right")
                 }
@@ -157,7 +145,7 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
             return cell
         }.disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(HomeModel.self).subscribe(onNext: { (model) in
+        tableView.rx.modelSelected(HomeItem.self).subscribe(onNext: { (model) in
             print("select model,\(model)")
         }).disposed(by: disposeBag)
         
@@ -194,6 +182,7 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAddFolder" {
+            handleNaviToolBarButtom()
             let navc = segue.destination as! UINavigationController
             let vc = navc.topViewController as! QRAddFolderController
             vc.delegate = self
@@ -201,20 +190,53 @@ class QRHomeController: UIViewController, QRAddFolderDelegate {
     }
     
     // MARK: -addFolderDelegate
-    func addFolderDetail(_ folder: HomeModel) {
-        viewModel.homeItems.append(folder)
+    func addFolderDetail(_ folder: HomeItem) {
+        dataSource.append(folder)
+        QRDBManager.insertHomeItem(by: folder)
         tableView.reloadData()
     }
     
     @IBAction func toolBarItemAction(_ sender: UIBarButtonItem) {
+        var selectArr: [HomeItem] = [HomeItem]()
+        for item in dataSource {
+            if item.isSelected {
+                selectArr.append(item)
+            }
+        }
+        
+        if selectArr.count == 0 {
+            QRTipsView.instance.show("Cann't edit", "Please Select 1 item at least")
+            return
+        }
         
         if sender.title == "Export" {
+            for selectItem in selectArr {
+                if (selectItem.fileType == HomeFileType.folder.rawValue) || (selectItem.fileType == HomeFileType.none.rawValue) {
+                    QRTipsView.instance.show("Cann't export", "items which type is folder could not export")
+                    return
+                }
+            }
             
+            export(items: selectArr)
         } else if sender.title == "Move" {
-            
+            for selectItem in selectArr {
+                if (selectItem.fileType == HomeFileType.folder.rawValue) || (selectItem.fileType == HomeFileType.none.rawValue) {
+                    QRTipsView.instance.show("Cann't move", "only item could be moved")
+                    return
+                }
+            }
         } else if sender.title == "Delete" {
+//            QRDBManager.deleteItem(item: selectArr.first!)
             
+            //QRDBManager.deleteItems(items: selectArr as! Results)
         }
+    }
+    
+    func export(items: [HomeItem]) {
+        let documentCtrl: UIDocumentInteractionController = UIDocumentInteractionController()
+        //documentCtrl.delegate = self
+        documentCtrl.presentOpenInMenu(from: .zero, in: view, animated: true)
+        
     }
     
     func handleNaviToolBarButtom() {
@@ -248,17 +270,13 @@ extension QRHomeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = dataSource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "QRHomeCell") as! QRHomeCell
-        cell.titleLabel.text = model.title
-        cell.tipsLabel.text = "\(model.items) items";
-        let format: DateFormatter = DateFormatter();
-        format.dateFormat = "yyyy/MM/dd"
-        cell.timeLabel.text = format.string(from: Date(timeIntervalSinceNow: TimeInterval(1000000 * indexPath.row)))
+        cell.model = model
         cell.isEdit = isEdit
-        cell.checkBoxBtn.isSelected = model.isSelected
+        //model.isSelected = true
+        //model.
         cell.didSelectTap = {(selected) in
-            var m = model
-            m.isSelected = selected
-            self.dataSource[indexPath.row] = m
+            model.isSelected = selected
+            //self.dataSource[indexPath.row] = m
             if !selected {
                 self.selectBarItem.image = UIImage(named: "right")
             }
@@ -277,10 +295,15 @@ extension QRHomeController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.navigationBar.showLine(hidenBigTitle)
             
             if offset > -44 && offset < 0 {
-                //titleLabel.font = UIFont.boldSystemFont(ofSize: 30 * (100 - offset) / 100.0)
+                // titleLabel.font = UIFont.boldSystemFont(ofSize: 30 * (100 - offset) / 100.0)
             }
         }
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+
+    }
+    
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
@@ -299,7 +322,9 @@ extension QRHomeController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
+        let sourceModel = dataSource[sourceIndexPath.row]
+        dataSource[sourceIndexPath.row] = dataSource[destinationIndexPath.row]
+        dataSource[destinationIndexPath.row] = sourceModel
     }
     
 }

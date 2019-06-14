@@ -19,6 +19,8 @@
 		DA130E91224241B600B9703D /* QRReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA130E90224241B600B9703D /* QRReaderTests.swift */; };
 		DA130E9D22424AFA00B9703D /* QRScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA130E9C22424AFA00B9703D /* QRScanController.swift */; };
 		DA130EA222424C0900B9703D /* Scan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA130EA022424C0900B9703D /* Scan.storyboard */; };
+		DA2D9B94227581DB002756F1 /* QRTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9B93227581DB002756F1 /* QRTipsView.swift */; };
+		DA2D9B972276DB6B002756F1 /* QRDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2D9B962276DB6B002756F1 /* QRDBManager.swift */; };
 		DAA232702243310C00749F18 /* QRHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA2326F2243310C00749F18 /* QRHomeController.swift */; };
 		DAA232782243549400749F18 /* QRHomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA232772243549400749F18 /* QRHomeCell.swift */; };
 		DAA2327A22435EA200749F18 /* QRConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA2327922435EA200749F18 /* QRConst.swift */; };
@@ -56,6 +58,8 @@
 		DA130E92224241B600B9703D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA130E9C22424AFA00B9703D /* QRScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanController.swift; sourceTree = "<group>"; };
 		DA130EA122424C0900B9703D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Scan.storyboard; sourceTree = "<group>"; };
+		DA2D9B93227581DB002756F1 /* QRTipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRTipsView.swift; sourceTree = "<group>"; };
+		DA2D9B962276DB6B002756F1 /* QRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDBManager.swift; sourceTree = "<group>"; };
 		DAA2326F2243310C00749F18 /* QRHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRHomeController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAA232772243549400749F18 /* QRHomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRHomeCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAA2327922435EA200749F18 /* QRConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRConst.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 		DA130E7A224241B400B9703D /* QRReader */ = {
 			isa = PBXGroup;
 			children = (
+				DA2D9B952276C4C3002756F1 /* dataManager */,
 				DA04155F2248F6A00001A0B4 /* UtoolExtension */,
 				DAA2327D2244AE0E00749F18 /* model */,
 				DAA2327422433D2300749F18 /* view */,
@@ -170,9 +175,18 @@
 			path = scan;
 			sourceTree = "<group>";
 		};
+		DA2D9B952276C4C3002756F1 /* dataManager */ = {
+			isa = PBXGroup;
+			children = (
+				DA2D9B962276DB6B002756F1 /* QRDBManager.swift */,
+			);
+			path = dataManager;
+			sourceTree = "<group>";
+		};
 		DAA2327422433D2300749F18 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				DA2D9B93227581DB002756F1 /* QRTipsView.swift */,
 				DAA232772243549400749F18 /* QRHomeCell.swift */,
 			);
 			path = view;
@@ -321,11 +335,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-QRReader/Pods-QRReader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/WeScan/WeScan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -333,11 +350,14 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WeScan.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,8 +395,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA130E7E224241B400B9703D /* ViewController.swift in Sources */,
+				DA2D9B972276DB6B002756F1 /* QRDBManager.swift in Sources */,
 				DAA232702243310C00749F18 /* QRHomeController.swift in Sources */,
 				DA0415582248DA340001A0B4 /* QRAddFolderController.swift in Sources */,
+				DA2D9B94227581DB002756F1 /* QRTipsView.swift in Sources */,
 				DA130E9D22424AFA00B9703D /* QRScanController.swift in Sources */,
 				DA130E7C224241B400B9703D /* AppDelegate.swift in Sources */,
 				DA0415632248F76D0001A0B4 /* QRToolExtensions.swift in Sources */,

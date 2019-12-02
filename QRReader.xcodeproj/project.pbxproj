@@ -56,7 +56,7 @@
 		DA130E8C224241B600B9703D /* QRReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QRReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA130E90224241B600B9703D /* QRReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRReaderTests.swift; sourceTree = "<group>"; };
 		DA130E92224241B600B9703D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA130E9C22424AFA00B9703D /* QRScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanController.swift; sourceTree = "<group>"; };
+		DA130E9C22424AFA00B9703D /* QRScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DA130EA122424C0900B9703D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Scan.storyboard; sourceTree = "<group>"; };
 		DA2D9B93227581DB002756F1 /* QRTipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRTipsView.swift; sourceTree = "<group>"; };
 		DA2D9B962276DB6B002756F1 /* QRDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRDBManager.swift; sourceTree = "<group>"; };

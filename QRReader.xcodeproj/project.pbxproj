@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -208,6 +208,7 @@
 			buildConfigurationList = DA130E95224241B600B9703D /* Build configuration list for PBXNativeTarget "QRReader" */;
 			buildPhases = (
 				EB673B17D02A9E716EAE6E0E /* [CP] Check Pods Manifest.lock */,
+				15C5E3CCE02DDC69AB95F18A /* [CP-User] Run Flutter Build Script */,
 				DA130E74224241B400B9703D /* Sources */,
 				DA130E75224241B400B9703D /* Frameworks */,
 				DA130E76224241B400B9703D /* Resources */,
@@ -227,9 +228,11 @@
 			buildConfigurationList = DA130E98224241B600B9703D /* Build configuration list for PBXNativeTarget "QRReaderTests" */;
 			buildPhases = (
 				28DF19D86DB56FED6C98C83B /* [CP] Check Pods Manifest.lock */,
+				1E2A17B76ACD4D90464AF204 /* [CP-User] Run Flutter Build Script */,
 				DA130E88224241B600B9703D /* Sources */,
 				DA130E89224241B600B9703D /* Frameworks */,
 				DA130E8A224241B600B9703D /* Resources */,
+				4B0C52C3134C86A30B69BF96 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,6 +306,38 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		15C5E3CCE02DDC69AB95F18A /* [CP-User] Run Flutter Build Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../flutter_pages/.metadata",
+				"${SRCROOT}/../flutter_pages/.ios/Flutter/App.framework/App",
+				"${SRCROOT}/../flutter_pages/.ios/Flutter/engine/Flutter.framework/Flutter",
+				"${SRCROOT}/../flutter_pages/.ios/Flutter/flutter_export_environment.sh",
+			);
+			name = "[CP-User] Run Flutter Build Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_pages/.ios/Flutter/flutter_export_environment.sh\"\n\"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
+		1E2A17B76ACD4D90464AF204 /* [CP-User] Run Flutter Build Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../flutter_pages/.metadata",
+				"${SRCROOT}/../flutter_pages/.ios/Flutter/App.framework/App",
+				"${SRCROOT}/../flutter_pages/.ios/Flutter/engine/Flutter.framework/Flutter",
+				"${SRCROOT}/../flutter_pages/.ios/Flutter/flutter_export_environment.sh",
+			);
+			name = "[CP-User] Run Flutter Build Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_pages/.ios/Flutter/flutter_export_environment.sh\"\n\"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
 		28DF19D86DB56FED6C98C83B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +358,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B0C52C3134C86A30B69BF96 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRReaderTests/Pods-QRReaderTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRReaderTests/Pods-QRReaderTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRReaderTests/Pods-QRReaderTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BB45578363A90C79D3B8DA7F /* [CP] Embed Pods Frameworks */ = {
@@ -466,6 +518,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -527,6 +580,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -555,6 +609,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 22L8F5N2ZA;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = QRReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -579,6 +634,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 22L8F5N2ZA;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = QRReader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

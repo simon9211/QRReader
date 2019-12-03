@@ -1,24 +1,30 @@
 PODS:
   - Differentiator (3.1.0)
+  - Flutter (1.0.0)
+  - flutter_pages (0.0.1):
+    - Flutter
+  - FlutterPluginRegistrant (0.0.1):
+    - Flutter
   - Realm (3.17.3):
     - Realm/Headers (= 3.17.3)
   - Realm/Headers (3.17.3)
   - RealmSwift (3.17.3):
     - Realm (= 3.17.3)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
   - RxDataSources (3.1.0):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
+  - RxSwift (4.5.0)
   - SnapKit (4.2.0)
   - SVProgressHUD (2.2.5)
-  - WeScan (0.9.1)
+  - WeScan (1.1.0)
 
 DEPENDENCIES:
+  - Flutter (from `../flutter_pages/.ios/Flutter/engine`)
+  - flutter_pages (from `../flutter_pages/.ios/Flutter`)
+  - FlutterPluginRegistrant (from `../flutter_pages/.ios/Flutter/FlutterPluginRegistrant`)
   - RealmSwift (~> 3.17.3)
   - RxCocoa (~> 4.0)
   - RxDataSources (~> 3.0)
@@ -32,7 +38,6 @@ SPEC REPOS:
     - Differentiator
     - Realm
     - RealmSwift
-    - RxAtomic
     - RxCocoa
     - RxDataSources
     - RxSwift
@@ -40,22 +45,28 @@ SPEC REPOS:
     - SVProgressHUD
     - WeScan
 
+EXTERNAL SOURCES:
+  Flutter:
+    :path: "../flutter_pages/.ios/Flutter/engine"
+  flutter_pages:
+    :path: "../flutter_pages/.ios/Flutter"
+  FlutterPluginRegistrant:
+    :path: "../flutter_pages/.ios/Flutter/FlutterPluginRegistrant"
+
 SPEC CHECKSUMS:
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_pages: 878c21d7a5e82655167107d38a0ec38ec7d15e34
+  FlutterPluginRegistrant: d59dd07dd90e9c6430996073575a5bd1ea19677e
   Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  WeScan: 85518097ab11d38be3b3a6e0ae244d59bc8071b4
+  WeScan: 7ebe08c966fbd7321be2be1a962423c237e3e2ec
 
-PODFILE CHECKSUM: 3ca91ae3b96930ef29f32b6486a8e9822bd38ba2
+PODFILE CHECKSUM: 9ecbb79dac7513ab36e5b675a42f784346d22fca
 
-<<<<<<< HEAD
 COCOAPODS: 1.7.5
-=======
-COCOAPODS: 1.6.1
->>>>>>> cef746b6bb4be76e12c0ef78bef7934774fc396c
